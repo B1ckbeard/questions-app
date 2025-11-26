@@ -1,0 +1,19 @@
+.grade {
+    border-radius: 8px;
+    padding: 6px 10px;
+    background-color: #F8F8F8;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 120%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: default;
+}
+
+.gradeValue {
+    color: white;
+    background-color: #6A0BFF;
+    padding: 2px 4px;
+    border-radius: 4px;
+}

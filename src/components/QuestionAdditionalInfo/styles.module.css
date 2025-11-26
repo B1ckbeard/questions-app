@@ -1,0 +1,65 @@
+.wrapper {
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 10px 0 #6a63761a;
+    background-color: white;
+}
+
+.level,
+.skills {
+    margin-bottom: 24px;
+}
+
+.gradeList {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.infoTitle {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    color: #474747;
+    margin-bottom: 16px;
+}
+
+.skillsList,
+.keywordsList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    border: 1px solid #6A0BFF;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.skill:hover {
+    background-color: #6A0BFF;
+
+    .skillTitle {
+        color: white;
+    }
+}
+
+.skillTitle {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    color: #303030;
+}
+
+.keywordTitle {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    vertical-align: middle;
+    color: #6A0BFF;
+}
