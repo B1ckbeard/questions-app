@@ -43,3 +43,54 @@
 .chevrone {
     transition: transform .3s ease-in-out;
 }
+
+.accordeon {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease-in-out;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.gradeList {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+/* .detailsButton {
+    display: flex;
+    align-items: center;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 8px;
+    gap: 12px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 120%;
+    background-color: #F8F8F8;
+    cursor: pointer;
+    color: #141414;
+}
+.detailsButton:hover {
+    color: #6A0BFF;
+} */
+
+.open {
+    .chevrone {
+        transform: rotateZ(-180deg);
+    }
+
+    .accordeon {
+        max-height: 700px;
+    }
+
+    .titleContent {
+        margin-bottom: 20px;
+    }
+}

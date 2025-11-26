@@ -1,0 +1,18 @@
+.detailsButton {
+    display: flex;
+    align-items: center;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 8px;
+    gap: 12px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 120%;
+    background-color: #F8F8F8;
+    cursor: pointer;
+    color: #141414;
+}
+
+.detailsButton:hover {
+    color: #6A0BFF;
+}
