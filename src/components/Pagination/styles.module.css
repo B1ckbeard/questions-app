@@ -1,0 +1,29 @@
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 16px 0;
+}
+
+.button {
+    height: 17px;
+    width: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+.active {
+    background-color: #6a0bff;
+    border-radius: 3px;
+    min-width: 21px;
+    min-height: 25px;
+    padding: 2px 6px;
+    color: white;
+    cursor: default;
+}
