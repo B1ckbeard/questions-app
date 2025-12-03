@@ -1,6 +1,7 @@
 import { Question, QuestionSkill } from "@/shared/interfaces";
 import styles from "./styles.module.css";
 import GradeBadge from "../GradeBadge/GradeBadge";
+import Wrapper from "../Wrapper/Wrapper";
 
 interface Props {
   question: Question;
@@ -9,7 +10,7 @@ interface Props {
 const QuestionAdditionalInfo = ({ question }: Props) => {
   return (
     <div className={styles.info}>
-      <div className={styles.wrapper}>
+      <Wrapper>
         <div className={styles.level}>
           <p className={styles.infoTitle}>Уровень: </p>
           <ul className={styles.gradeList}>
@@ -37,7 +38,7 @@ const QuestionAdditionalInfo = ({ question }: Props) => {
             ))}
           </div>
         </div>
-      </div>
+      </Wrapper>
     </div>
   );
 };
