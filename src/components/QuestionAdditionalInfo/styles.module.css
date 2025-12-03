@@ -1,8 +1,9 @@
-.wrapper {
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 4px 10px 0 #6a63761a;
-    background-color: white;
+.info {
+    height: auto;
+    max-width: 360px;
+    min-width: 360px;
+    position: sticky;
+    top: 0;
 }
 
 .level,
