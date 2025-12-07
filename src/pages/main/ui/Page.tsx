@@ -7,7 +7,7 @@ import Filters from "@/components/Filters/Filters";
 import { useAppSelector } from "@/app/appStore";
 
 const MainPage = () => {
-  const { filters } = useAppSelector((state) => state.questions);
+  const { filters, search } = useAppSelector((state) => state.questions);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [pagesCount, setPagesCount] = useState(1);
@@ -15,7 +15,7 @@ const MainPage = () => {
 
   useEffect(() => {
     const getQuestions = async () => {
-      fetchQuestions(currentPage, limit, filters)
+      fetchQuestions(currentPage, limit, filters, search)
         .then((data) => {
           setQuestions(data.data);
           setPagesCount(Math.ceil(data.total / limit));
@@ -25,7 +25,7 @@ const MainPage = () => {
         });
     };
     getQuestions();
-  }, [currentPage, filters]);
+  }, [currentPage, filters, search]);
 
   return (
     <div className={styles.container}>
