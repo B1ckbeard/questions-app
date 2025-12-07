@@ -2,10 +2,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface QuestionsState {
   filters: string;
+  search: string;
 }
 
 const initialState: QuestionsState = {
   filters: "",
+  search: "",
 };
 
 export const questionsSlice = createSlice({
@@ -19,9 +21,13 @@ export const questionsSlice = createSlice({
     resetFilters: (state) => {
       state.filters = "";
     },
+    setSearch: (state, action: PayloadAction<string>) => {
+      const value = action.payload;
+      state.search = value;
+    },
   },
 });
 
-export const { setFilters, resetFilters } = questionsSlice.actions;
+export const { setFilters, setSearch } = questionsSlice.actions;
 
 export default questionsSlice.reducer;

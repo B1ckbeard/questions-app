@@ -4,7 +4,6 @@ import styles from "./styles.module.css";
 import { fetchSkills } from "@/api";
 import FiltersCategory from "../FiltersCategory/FiltersCategory";
 import SearchQuestions from "../SearchQuestions/SearchQuestions";
-import { useSearchParams } from "react-router";
 import { useAppDispatch } from "@/app/appStore";
 import { setFilters } from "@/app/questionsSlice";
 
@@ -22,7 +21,6 @@ interface SelectedFilters {
 
 const Filters = () => {
   const dispatch = useAppDispatch();
-  const [, setSearchParams] = useSearchParams();
   const [skills, setSkills] = useState<Skill[]>([]);
   const complexities = ["1-3", "4-6", "7-8", "9-10"];
   const ratings = [1, 2, 3, 4, 5];
@@ -51,7 +49,6 @@ const Filters = () => {
     if (params.size > 0) {
       params.set("order", "ASC");
     }
-    setSearchParams(params);
     dispatch(setFilters(params.toString()));
   };
 
