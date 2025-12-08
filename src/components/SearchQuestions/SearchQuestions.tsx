@@ -1,28 +1,12 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent } from "react";
 import styles from "./styles.module.css";
-import { useAppDispatch } from "@/app/appStore";
-import { setSearch } from "@/app/questionsSlice";
-import { useDebounce } from "@/shared/hooks/useDebounce";
 
-const SearchQuestions = () => {
-  const TIMEOUT = 1000;
-  const dispatch = useAppDispatch();
-  const [searchQuery, setSearchQuery] = useState<string>("");
+interface Props {
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  searchQuery: string;
+}
 
-  const debouncedSearch = useDebounce(searchQuery, TIMEOUT);
-
-  useEffect(() => {
-    const params = new URLSearchParams();
-    if (debouncedSearch.trim()) {
-      params.set("titleOrDescription", debouncedSearch.trim());
-    }
-    dispatch(setSearch(params.toString()));
-  }, [debouncedSearch, dispatch]);
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    setSearchQuery(e.target.value);
-  };
-
+const SearchQuestions = ({ onChange, searchQuery }: Props) => {
   return (
     <div className={styles.search}>
       <svg
@@ -43,7 +27,7 @@ const SearchQuestions = () => {
       <input
         className={styles.input}
         value={searchQuery}
-        onChange={handleInputChange}
+        onChange={onChange}
         type="text"
         placeholder="Введите вопрос..."
       />

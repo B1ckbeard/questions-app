@@ -4,11 +4,10 @@ export const fetchQuestions = async (
   page: number,
   limit: number,
   filters: string,
-  search: string
 ) => {
   try {
     const response = await fetch(
-      `${BASE_URL}/questions/public-questions?page=${page}&limit=${limit}&${search}&${filters}`
+      `${BASE_URL}/questions/public-questions?page=${page}&limit=${limit}&${filters}`
     );
     const data = await response.json();
     return data;

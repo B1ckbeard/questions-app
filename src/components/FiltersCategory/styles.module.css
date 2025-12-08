@@ -1,9 +1,14 @@
+.category {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
 .categoryTitle {
     font-weight: 400;
     font-size: 14px;
     line-height: 120%;
     color: #474747;
-    margin-bottom: 8px;
 }
 
 .categoryList {
@@ -36,4 +41,16 @@
 
 .selected {
     border-color: #6A0BFF;
+}
+
+.showMoreButton {
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    color: #5509CC;
+}
+
+.showMoreButton:hover {
+    text-decoration: underline solid 0% #5509CC;
 }
