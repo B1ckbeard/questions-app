@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "./styles.module.css";
 
 interface Item {
@@ -11,6 +12,7 @@ interface Props<T> {
   onToggle: (item: T) => void;
   getItemValue?: (item: T) => string | number;
   getItemLabel?: (item: T) => string;
+  limit?: number;
 }
 
 const FiltersCategory = <T extends Item | string | number>({
@@ -26,7 +28,10 @@ const FiltersCategory = <T extends Item | string | number>({
       ? (item as Item).title
       : String(item),
   onToggle,
+  limit = 5,
 }: Props<T>) => {
+  const [showAll, setShowAll] = useState(false);
+
   const isSelected = (item: T) => {
     const value = getItemValue(item);
     return selectedItems.some((selected) => {
@@ -35,11 +40,14 @@ const FiltersCategory = <T extends Item | string | number>({
     });
   };
 
+  const shouldShowToggle = items.length > limit;
+  const itemsToShow = showAll ? items : items.slice(0, limit);
+
   return (
     <div className={styles.category}>
       <p className={styles.categoryTitle}>{title}</p>
       <div className={styles.categoryList}>
-        {items.map((item, index) => {
+        {itemsToShow.map((item, index) => {
           const selected = isSelected(item);
           return (
             <span
@@ -54,6 +62,14 @@ const FiltersCategory = <T extends Item | string | number>({
           );
         })}
       </div>
+      {shouldShowToggle && (
+        <a
+          className={styles.showMoreButton}
+          onClick={() => setShowAll(!showAll)}
+        >
+          {showAll ? "Скрыть" : "Посмотреть все"}
+        </a>
+      )}
     </div>
   );
 };
