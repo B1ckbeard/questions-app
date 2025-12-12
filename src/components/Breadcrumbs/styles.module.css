@@ -1,0 +1,12 @@
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    height: 27px;
+    margin-bottom: 24px;
+}
+
+.breadcrumbList {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}

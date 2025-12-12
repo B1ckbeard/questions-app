@@ -18,14 +18,14 @@ const QuestionAdditionalInfo = ({ question }: Props) => {
     const params = new URLSearchParams();
     params.set("skills", id.toString());
     dispatch(setFilters(params.toString()));
-    navigate(`/?${params}`, { replace: true });
+    navigate(`/questions?${params}`, { replace: true });
   };
 
   const handleKeywordClick = (keyword: string): void => {
     const params = new URLSearchParams();
     params.set("keywords", keyword);
     dispatch(setFilters(params.toString()));
-    navigate(`/?${params}`, { replace: true });
+    navigate(`/questions?${params}`, { replace: true });
   };
 
   return (
