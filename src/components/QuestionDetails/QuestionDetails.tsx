@@ -1,7 +1,7 @@
 import { Question } from "@/shared/interfaces";
 import styles from "./styles.module.css";
-import BackButton from "../BackButton/BackButton";
 import Wrapper from "../Wrapper/Wrapper";
+// import BackLink from "../BackLink/BackLink";
 
 interface Props {
   question: Question;
@@ -10,7 +10,7 @@ interface Props {
 const QuestionDetails = ({ question }: Props) => {
   return (
     <div className={styles.details}>
-      <BackButton />
+      {/* <BackLink /> */}
       <Wrapper>
         <p className={styles.questionTitle}>{question.title}</p>
         <p className={styles.description}>{question.description}</p>

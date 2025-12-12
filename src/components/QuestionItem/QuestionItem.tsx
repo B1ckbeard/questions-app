@@ -3,6 +3,7 @@ import styles from "./styles.module.css";
 import { useState } from "react";
 import GradeBadge from "../GradeBadge/GradeBadge";
 import DetailsButton from "../DetailsButton/DetailsButton";
+import { icons } from "@/shared/assets";
 
 interface Props {
   question: Question;
@@ -18,23 +19,11 @@ const QuestionItem = ({ question }: Props) => {
       <div className={styles.titleContent}>
         <button className={styles.titleButton} onClick={handleToggleAccordeon}>
           <p className={styles.title}>{question.title}</p>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+          <img
+            src={icons.chevroneDown}
+            alt="chevrone"
             className={styles.chevrone}
-            color="#6a0bff"
-          >
-            <path
-              d="M5 7.5L10 12.5L15 7.5"
-              stroke="currentColor"
-              strokeWidth="1.66667"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            ></path>
-          </svg>
+          />
         </button>
       </div>
       <div className={styles.accordeon}>
