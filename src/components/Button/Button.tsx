@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 interface Props {
   title: string;
   onClick: () => void;
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 const Button = ({ title, onClick, disabled = false }: Props) => {

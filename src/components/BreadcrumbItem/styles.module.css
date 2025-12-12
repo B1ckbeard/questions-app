@@ -1,0 +1,24 @@
+.breadcrumbItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.breadcrumbLink {
+    color: #474747;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+}
+
+.breadcrumbTitle {
+    color: #6A0BFF;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    cursor: default;
+}
+
+.lastItem {
+    color: #6A0BFF;
+}

@@ -6,6 +6,7 @@ import QuestionsListWithPagination from "@/components/QuestionsListWithPaginatio
 import Filters from "@/components/Filters/Filters";
 import { useAppSelector } from "@/app/appStore";
 import { useLocation } from "react-router";
+import Wrapper from "@/components/Wrapper/Wrapper";
 
 const MainPage = () => {
   const { filters } = useAppSelector((state) => state.questions);
@@ -33,13 +34,23 @@ const MainPage = () => {
 
   return (
     <div className={styles.container}>
-      {questions && (
+      {questions.length > 0 ? (
         <QuestionsListWithPagination
           questions={questions}
           pagesCount={pagesCount}
           currentPage={currentPage}
           onPageClick={setCurrentPage}
         />
+      ) : (
+        <Wrapper>
+          <div className={styles.questionsTitle}>
+            <h2 className={styles.title}>Вопросы</h2>
+          </div>
+          <p className={styles.desciption}>
+            К сожалению, по запросу ничего не найдено. Попробуйте изменить
+            запрос или воспользуйтесь нашими категориями.
+          </p>
+        </Wrapper>
       )}
       <Filters />
     </div>
