@@ -1,6 +1,7 @@
 import { Question } from "@/shared/interfaces";
 import styles from "./styles.module.css";
 import Wrapper from "../Wrapper/Wrapper";
+import QuestionHtml from "../QuestionHtml/QuestionHtml";
 // import BackLink from "../BackLink/BackLink";
 
 interface Props {
@@ -17,11 +18,11 @@ const QuestionDetails = ({ question }: Props) => {
       </Wrapper>
       <Wrapper>
         <p className={styles.answerTitle}>Краткий ответ</p>
-        <p className={styles.description}>{question.shortAnswer}</p>
+        <QuestionHtml answer={question.shortAnswer} />
       </Wrapper>
       <Wrapper>
         <p className={styles.answerTitle}>Полный ответ</p>
-        <p className={styles.description}>{question.longAnswer}</p>
+        <QuestionHtml answer={question.longAnswer} />
       </Wrapper>
     </div>
   );

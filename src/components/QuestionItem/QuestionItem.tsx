@@ -4,6 +4,7 @@ import { useState } from "react";
 import GradeBadge from "../GradeBadge/GradeBadge";
 import DetailsButton from "../DetailsButton/DetailsButton";
 import { icons } from "@/shared/assets";
+import QuestionHtml from "../QuestionHtml/QuestionHtml";
 
 interface Props {
   question: Question;
@@ -34,7 +35,7 @@ const QuestionItem = ({ question }: Props) => {
           </ul>
           <DetailsButton question={question} />
         </div>
-        <p>{question.shortAnswer}</p>
+        <QuestionHtml answer={question.shortAnswer} />
       </div>
     </div>
   );
