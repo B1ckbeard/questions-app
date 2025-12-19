@@ -17,8 +17,8 @@ const QuestionItem = ({ question }: Props) => {
 
   return (
     <div className={`${styles.item} ${isOpen ? styles.open : ""}`}>
-      <div className={styles.titleContent}>
-        <button className={styles.titleButton} onClick={handleToggleAccordeon}>
+      <div className={styles.headerContent}>
+        <button className={styles.headerButton} onClick={handleToggleAccordeon}>
           <p className={styles.title}>{question.title}</p>
           <img
             src={icons.chevroneDown}
@@ -27,7 +27,7 @@ const QuestionItem = ({ question }: Props) => {
           />
         </button>
       </div>
-      <div className={styles.accordeon}>
+      <div className={styles.accordion}>
         <div className={styles.info}>
           <ul className={styles.gradeList}>
             <GradeBadge title="Рейтинг:" grade={question.rate} />

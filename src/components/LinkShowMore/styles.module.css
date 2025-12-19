@@ -1,0 +1,11 @@
+.showMoreLink {
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    color: #5509CC;
+}
+
+.showMoreLink:hover {
+    text-decoration: underline solid 0% #5509CC;
+}

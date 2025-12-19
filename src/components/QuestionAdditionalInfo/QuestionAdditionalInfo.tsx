@@ -1,31 +1,28 @@
-import { Question, QuestionSkill } from "@/shared/interfaces";
+import { Question, Skill } from "@/shared/interfaces";
 import styles from "./styles.module.css";
 import GradeBadge from "../GradeBadge/GradeBadge";
 import Wrapper from "../Wrapper/Wrapper";
-import { useAppDispatch } from "@/app/appStore";
-import { setFilters } from "@/app/questionsSlice";
 import { useNavigate } from "react-router";
+import FiltersCategoryItem from "../FiltersCategoryItem/FiltersCategoryItem";
+import LinkKeyword from "../LinkKeyword/LinkKeyword";
 
 interface Props {
   question: Question;
 }
 
 const QuestionAdditionalInfo = ({ question }: Props) => {
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const handleSkillClick = (id: number): void => {
     const params = new URLSearchParams();
     params.set("skills", id.toString());
-    dispatch(setFilters(params.toString()));
-    navigate(`/questions?${params}`, { replace: true });
+    navigate(`/questions?${params}`);
   };
 
   const handleKeywordClick = (keyword: string): void => {
     const params = new URLSearchParams();
     params.set("keywords", keyword);
-    dispatch(setFilters(params.toString()));
-    navigate(`/questions?${params}`, { replace: true });
+    navigate(`/questions?${params}`);
   };
 
   return (
@@ -41,14 +38,14 @@ const QuestionAdditionalInfo = ({ question }: Props) => {
         <div className={styles.skills}>
           <p className={styles.infoTitle}>Навыки: </p>
           <div className={styles.skillsList}>
-            {question.questionSkills.map((skill: QuestionSkill) => (
-              <div
+            {question.questionSkills.map((skill: Skill) => (
+              <FiltersCategoryItem
                 key={skill.id}
-                className={styles.skill}
+                isSelected={true}
+                item={skill}
+                title={skill.title}
                 onClick={() => handleSkillClick(skill.id)}
-              >
-                <p className={styles.skillTitle}>{skill.title}</p>
-              </div>
+              />
             ))}
           </div>
         </div>
@@ -56,13 +53,11 @@ const QuestionAdditionalInfo = ({ question }: Props) => {
           <p className={styles.infoTitle}>Ключевые слова: </p>
           <div className={styles.keywordsList}>
             {question.keywords.map((keyword: string, index: number) => (
-              <p
+              <LinkKeyword
                 key={index}
-                className={styles.keyword}
+                keyword={keyword}
                 onClick={() => handleKeywordClick(keyword)}
-              >
-                #{keyword}
-              </p>
+              />
             ))}
           </div>
         </div>
