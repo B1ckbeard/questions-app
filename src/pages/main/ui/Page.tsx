@@ -1,46 +1,62 @@
 import styles from "./styles.module.css";
-import { useCallback, useEffect, useState } from "react";
-import { Question } from "@/shared/interfaces";
-import { fetchQuestions } from "@/api";
+import { useEffect } from "react";
 import QuestionsListWithPagination from "@/components/QuestionsListWithPagination/QuestionsListWithPagination";
 import Filters from "@/components/Filters/Filters";
-import { useAppSelector } from "@/app/appStore";
-import { useLocation } from "react-router";
 import Wrapper from "@/components/Wrapper/Wrapper";
+import { useGetQuestionsQuery } from "@/app/questionsApi";
+import { useSearchParams } from "react-router";
+import { useAppDispatch, useAppSelector } from "@/app/appStore";
+import { resetPagination, setPagesCount } from "@/app/questionsSlice";
 
 const MainPage = () => {
-  const { filters } = useAppSelector((state) => state.questions);
-  const location = useLocation();
-  const [questions, setQuestions] = useState<Question[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pagesCount, setPagesCount] = useState(1);
-  const limit: number = 10;
+  const [searchParams] = useSearchParams();
+  const { currentPage } = useAppSelector((state) => state.questions);
+  const pageLimit: number = 10;
 
-  const getQuestions = useCallback(async () => {
-    const queryParams = location.search ? filters : "";
-    fetchQuestions(currentPage, limit, queryParams)
-      .then((data) => {
-        setQuestions(data.data);
-        setPagesCount(Math.ceil(data.total / limit));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [currentPage, filters, location.search]);
+  const filtersString = searchParams.toString();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    getQuestions();
-  }, [getQuestions]);
+    dispatch(resetPagination());
+  }, [dispatch, filtersString]);
+
+  const queryParams = {
+    page: currentPage,
+    pageLimit,
+    filters: searchParams.toString(),
+  };
+
+  const {
+    data: questionsData,
+    isLoading,
+    isError,
+  } = useGetQuestionsQuery(queryParams, {
+    refetchOnMountOrArgChange: true,
+  });
+
+  useEffect(() => {
+    if (questionsData) {
+      const pagesCount = Math.ceil(questionsData.total / pageLimit);
+      dispatch(setPagesCount(pagesCount));
+    }
+  }, [questionsData, dispatch]);
 
   return (
     <div className={styles.container}>
-      {questions.length > 0 ? (
-        <QuestionsListWithPagination
-          questions={questions}
-          pagesCount={pagesCount}
-          currentPage={currentPage}
-          onPageClick={setCurrentPage}
-        />
+      {isLoading ? (
+        <Wrapper>
+          <div className={styles.loading}>
+            <p>Загрузка вопросов...</p>
+          </div>
+        </Wrapper>
+      ) : isError ? (
+        <Wrapper>
+          <div className={styles.error}>
+            <p>Ошибка при загрузке вопросов</p>
+          </div>
+        </Wrapper>
+      ) : questionsData?.data?.length > 0 ? (
+        <QuestionsListWithPagination questions={questionsData.data} />
       ) : (
         <Wrapper>
           <div className={styles.questionsTitle}>

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import styles from "./styles.module.css";
 import { icons } from "@/shared/assets";
 
-const BackLink = () => {
+const LinkBack = () => {
   const navigate = useNavigate();
   return (
     <div className={styles.navigate}>
@@ -14,4 +14,4 @@ const BackLink = () => {
   );
 };
 
-export default BackLink;
+export default LinkBack;
