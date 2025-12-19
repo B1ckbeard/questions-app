@@ -6,11 +6,11 @@
     transition: padding .2s ease-in-out;
 }
 
-.titleContent {
+.headerContent {
     transition: margin-bottom .3s ease-in-out;
 }
 
-.titleButton {
+.headerButton {
     align-items: flex-start;
     background-color: initial;
     border: none;
@@ -47,7 +47,7 @@
     transition: transform .3s ease-in-out;
 }
 
-.accordeon {
+.accordion {
     max-height: 0;
     overflow: hidden;
     transition: max-height .3s ease-in-out;
@@ -71,11 +71,11 @@
         transform: rotateZ(-180deg);
     }
 
-    .accordeon {
+    .accordion {
         max-height: 700px;
     }
 
-    .titleContent {
+    .headerContent {
         margin-bottom: 20px;
     }
 }

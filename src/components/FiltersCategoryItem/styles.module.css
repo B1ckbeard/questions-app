@@ -1,0 +1,24 @@
+.categoryItem {
+    align-items: center;
+    background-color: initial;
+    border: 1px solid #bababa;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+    width: fit-content;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 120%;
+    font-weight: 500;
+}
+
+.categoryItem:hover {
+    background-color: #6A0BFF;
+    border-color: #6A0BFF;
+    color: white;
+}
+
+.selected {
+    border-color: #6A0BFF;
+}

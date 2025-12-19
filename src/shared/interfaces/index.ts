@@ -1,7 +1,16 @@
-export interface QuestionSkill {
+export interface Skill {
   id: number;
   title: string;
   description: string;
+  imageSrc: string | null;
+  specializations?: Specialization[];
+}
+
+export interface Specialization {
+  id: number;
+  title: string;
+  description: string;
+  imageSrc: string | null;
 }
 
 export interface Question {
@@ -13,5 +22,23 @@ export interface Question {
   complexity: number;
   description: string;
   keywords: string[];
-  questionSkills: QuestionSkill[];
+  questionSkills: Skill[];
+  questionSpecializations: Specialization[];
+}
+
+export interface SelectedFilters {
+  skills: Skill[];
+  complexities: string[];
+  ratings: number[];
+  search: string;
+}
+
+export type FilterItem = Skill | Specialization | string | number;
+
+export interface FilterConfig<T extends FilterItem> {
+  title: string;
+  items: T[];
+  selectedItems: T[];
+  onToggle: (item: T) => void;
+  limit?: number;
 }

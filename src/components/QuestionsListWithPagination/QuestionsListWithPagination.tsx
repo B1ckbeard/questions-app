@@ -5,25 +5,13 @@ import { Question } from "@/shared/interfaces";
 
 interface Props {
   questions: Question[];
-  pagesCount: number;
-  currentPage: number;
-  onPageClick: (page: number) => void;
 }
 
-const QuestionsListWithPagination = ({
-  questions,
-  pagesCount,
-  currentPage,
-  onPageClick,
-}: Props) => {
+const QuestionsListWithPagination = ({ questions }: Props) => {
   return (
     <Wrapper>
       <QuestionsList questions={questions} />
-      <Pagination
-        pagesCount={pagesCount}
-        currentPage={currentPage}
-        onPageClick={onPageClick}
-      />
+      <Pagination />
     </Wrapper>
   );
 };

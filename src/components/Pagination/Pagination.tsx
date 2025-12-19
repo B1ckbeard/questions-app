@@ -1,37 +1,20 @@
+import { usePagination } from "@/shared/hooks/usePagination";
 import ArrowButton from "../ArrowButton/ArrowButton";
 import styles from "./styles.module.css";
-import { getPagesRange } from "@/shared/helpers/getPagesRange";
 import { icons } from "@/shared/assets";
+import PaginationButton from "../PaginationButton/PaginationButton";
 
-interface Props {
-  pagesCount: number;
-  currentPage: number;
-  onPageClick: (page: number) => void;
-}
-
-const Pagination = ({ pagesCount, currentPage, onPageClick }: Props) => {
-  const startPage = 1;
-  const paginationSize = 5;
-  const delta = Math.floor(paginationSize / 2);
-
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      onPageClick(currentPage - 1);
-    }
-  };
-
-  const handleNextPage = () => {
-    if (currentPage < pagesCount) {
-      onPageClick(currentPage + 1);
-    }
-  };
-
-  const pagesRange = getPagesRange(
+const Pagination = () => {
+  const {
     currentPage,
-    delta,
+    startPage,
     pagesCount,
-    paginationSize
-  );
+    delta,
+    pagesRange,
+    onPageClick,
+    handlePrevPage,
+    handleNextPage,
+  } = usePagination();
 
   return (
     <div className={styles.pagination}>
@@ -42,39 +25,30 @@ const Pagination = ({ pagesCount, currentPage, onPageClick }: Props) => {
       />
       {currentPage > delta + 1 && (
         <>
-          <button
+          <PaginationButton
+            page={startPage}
             onClick={() => onPageClick(startPage)}
-            className={`${styles.button} ${
-              currentPage === startPage ? styles.active : ""
-            }`}
-          >
-            <p>{startPage}</p>
-          </button>
+            isActive={currentPage === startPage}
+          />
           <img src={icons.dots} alt="dots" />
         </>
       )}
       {pagesRange.map((page: number) => (
-        <button
+        <PaginationButton
           key={page}
+          page={page}
           onClick={() => onPageClick(page)}
-          className={`${styles.button} ${
-            currentPage === page ? styles.active : ""
-          }`}
-        >
-          <p>{page}</p>
-        </button>
+          isActive={currentPage === page}
+        />
       ))}
       {currentPage < pagesCount - delta && (
         <>
           <img src={icons.dots} alt="dots" />
-          <button
+          <PaginationButton
+            page={pagesCount}
             onClick={() => onPageClick(pagesCount)}
-            className={`${styles.button} ${
-              currentPage === pagesCount ? styles.active : ""
-            }`}
-          >
-            <p>{pagesCount}</p>
-          </button>
+            isActive={currentPage === pagesCount}
+          />
         </>
       )}
       <ArrowButton

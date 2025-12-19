@@ -35,7 +35,12 @@ const QuestionHtml = ({ answer }: Props) => {
     ALLOW_DATA_ATTR: false,
   });
 
-  return <div className={styles.answer} dangerouslySetInnerHTML={{ __html: cleanHtml }} />;
+  return (
+    <div
+      className={styles.answer}
+      dangerouslySetInnerHTML={{ __html: cleanHtml }}
+    />
+  );
 };
 
 export default QuestionHtml;
