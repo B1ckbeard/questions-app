@@ -7,7 +7,7 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.wrapper}>
         <div className={styles.titleBlock}>
-          <Link to="/" className={styles.appLink}>
+          <Link to="/questions" className={styles.appLink}>
             <img src={headerIcons.logo} alt="logo" className={styles.logo} />
             <img
               src={headerIcons.yeahub}
@@ -18,12 +18,12 @@ const Header = () => {
           <nav>
             <ul className={styles.navNenu}>
               <li>
-                <Link to="/" className={styles.navLink}>
+                <Link to="/questions" className={styles.navLink}>
                   База вопросов
                 </Link>
               </li>
               <li>
-                <Link to="/" className={styles.navLink}>
+                <Link to="/questions" className={styles.navLink}>
                   Тренажер
                 </Link>
               </li>
@@ -31,7 +31,7 @@ const Header = () => {
           </nav>
         </div>
         <div className={styles.auth}>
-          <Link to="/" className={styles.authLink}>
+          <Link to="/questions" className={styles.authLink}>
             Вход
           </Link>
           <button className={styles.authButton}>Регистрация</button>

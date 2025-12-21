@@ -3,11 +3,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface QuestionsState {
   currentPage: number;
   pagesCount: number;
+  pageLimit: number;
 }
 
 const initialState: QuestionsState = {
   currentPage: 1,
   pagesCount: 1,
+  pageLimit: 10,
 };
 
 export const questionsSlice = createSlice({

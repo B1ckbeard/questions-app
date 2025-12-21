@@ -16,6 +16,8 @@ const Pagination = () => {
     handleNextPage,
   } = usePagination();
 
+  if (pagesCount === 0) return null;
+
   return (
     <div className={styles.pagination}>
       <ArrowButton

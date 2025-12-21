@@ -11,3 +11,16 @@
     flex-direction: column;
     gap: 24px;
 }
+
+.filtersError {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filtersErrorDescription {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 120%;
+}
