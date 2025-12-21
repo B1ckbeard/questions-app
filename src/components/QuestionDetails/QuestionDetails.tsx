@@ -2,7 +2,6 @@ import { Question } from "@/shared/interfaces";
 import styles from "./styles.module.css";
 import Wrapper from "../Wrapper/Wrapper";
 import QuestionHtml from "../QuestionHtml/QuestionHtml";
-// import LinkBack from "../LinkBack/LinkBack";
 
 interface Props {
   question: Question;
@@ -11,7 +10,6 @@ interface Props {
 const QuestionDetails = ({ question }: Props) => {
   return (
     <div className={styles.details}>
-      {/* <LinkBack /> */}
       <Wrapper>
         <p className={`${styles.text} ${styles.questionTitle}`}>
           {question.title}

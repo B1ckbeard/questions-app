@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { setPagesCount } from "./questionsSlice";
 const BASE_URL = import.meta.env.VITE_QUESTIONS_BASE_API_URL as string;
 
 export const questionsApi = createApi({
   reducerPath: "questionsApi",
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
-  tagTypes: ["questions"],
+  tagTypes: ["Question", "Questions"],
   endpoints: (builder) => ({
     getQuestions: builder.query({
       query: (params) => {
@@ -25,9 +26,24 @@ export const questionsApi = createApi({
           params: Object.fromEntries(queryParams),
         };
       },
-      providesTags: ["questions"],
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          const limit = arg?.limit || 10;
+          const total = data?.total || 0;
+          const pagesCount = Math.ceil(total / limit);
+          dispatch(setPagesCount(pagesCount));
+        } catch (err) {
+          console.error("Failed to calculate pages count:", err);
+        }
+      },
+      providesTags: ["Questions"],
+    }),
+    getQuestionById: builder.query({
+      query: (id: number) => `questions/public-questions/${id}`,
+      providesTags: (id) => [{ type: "Question" as const, id }],
     }),
   }),
 });
 
-export const { useGetQuestionsQuery } = questionsApi;
+export const { useGetQuestionsQuery, useGetQuestionByIdQuery } = questionsApi;

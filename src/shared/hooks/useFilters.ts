@@ -7,7 +7,9 @@ import { useFiltersLogic } from "./useFiltersLogic";
 import { useFilterHandlers } from "./useFiltersHandlers";
 
 export const useFilters = () => {
-  const { skills, specializations, complexities, ratings } = useFiltersData();
+  const { skills, specializations, complexities, ratings, isLoading, isError } =
+    useFiltersData();
+
   const {
     searchParams,
     setSearchParams,
@@ -45,7 +47,7 @@ export const useFilters = () => {
 
   const hasActiveFilters = useMemo(
     () =>
-      ["title", "skills", "complexity", "rate"].some((param) =>
+      ["title", "skills", "complexity", "rate", "keywords"].some((param) =>
         hasParam(param)
       ),
     [hasParam]
@@ -105,5 +107,7 @@ export const useFilters = () => {
     hasActiveFilters,
     handleInputChange,
     handleResetFilters,
+    isLoading,
+    isError,
   };
 };

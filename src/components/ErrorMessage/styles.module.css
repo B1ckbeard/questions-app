@@ -1,0 +1,21 @@
+.error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 56px 0;
+}
+
+.errorTitle {
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 120%;
+    margin-bottom: 12px;
+}
+
+.errorDescription {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 120%;
+    margin-bottom: 24px;
+}
