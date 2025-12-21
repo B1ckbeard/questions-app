@@ -9,12 +9,21 @@ interface Props {
 const QuestionsList = ({ questions }: Props) => {
   return (
     <div className={styles.questionsList}>
-      <div className={styles.questionsTitle}>
+      <div className={styles.questionsHeader}>
         <h2 className={styles.title}>Вопросы</h2>
       </div>
-      {questions?.map((question) => (
-        <QuestionItem key={question.id} question={question} />
-      ))}
+      {questions.length > 0 ? (
+        <>
+          {questions?.map((question) => (
+            <QuestionItem key={question.id} question={question} />
+          ))}
+        </>
+      ) : (
+        <p className={styles.desciption}>
+          К сожалению, по запросу ничего не найдено. Попробуйте изменить запрос
+          или воспользуйтесь нашими категориями.
+        </p>
+      )}
     </div>
   );
 };

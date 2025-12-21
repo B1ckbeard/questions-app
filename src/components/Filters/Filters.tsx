@@ -4,6 +4,7 @@ import FiltersCategory from "../FiltersCategory/FiltersCategory";
 import SearchQuestions from "../SearchQuestions/SearchQuestions";
 import Button from "../Button/Button";
 import { useFilters } from "@/shared/hooks/useFilters";
+import FiltersSkeleton from "../FiltersSkeleton/FiltersSkeleton";
 
 const Filters = () => {
   const {
@@ -12,7 +13,24 @@ const Filters = () => {
     hasActiveFilters,
     handleInputChange,
     handleResetFilters,
+    isLoading,
+    isError,
   } = useFilters();
+
+  if (isLoading) return <FiltersSkeleton />;
+
+  if (isError)
+    return (
+      <div className={styles.filters}>
+        <Wrapper>
+          <div className={styles.filtersError}>
+            <p className={styles.filtersErrorDescription}>
+              Ошибка при загрузке фильтров
+            </p>
+          </div>
+        </Wrapper>
+      </div>
+    );
 
   return (
     <div className={styles.filters}>
