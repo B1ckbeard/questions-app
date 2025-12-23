@@ -1,0 +1,73 @@
+.item {
+    padding: 16px 24px;
+    margin-bottom: 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px 0 #6a63761a;
+    transition: padding .2s ease-in-out;
+}
+
+.headerContent {
+    transition: margin-bottom .3s ease-in-out;
+}
+
+.headerButton {
+    align-items: flex-start;
+    background-color: initial;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.title {
+    display: flex;
+    align-items: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 120%;
+    position: relative;
+    padding-left: 16px;
+    transition: color .3s ease-in-out;
+    text-align: initial;
+}
+
+.title::before {
+    width: 8px;
+    height: 8px;
+    background-color: #5533FF;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 7px;
+    content: "";
+}
+
+.accordion {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease-in-out;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.gradeList {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.open {
+    .accordion {
+        max-height: 700px;
+    }
+
+    .headerContent {
+        margin-bottom: 20px;
+    }
+}
