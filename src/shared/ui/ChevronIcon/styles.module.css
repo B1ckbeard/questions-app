@@ -1,0 +1,7 @@
+.chevrone {
+    transition: transform .3s ease-in-out;
+}
+
+.chevrone.open {
+    transform: rotateZ(-180deg);
+}

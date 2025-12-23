@@ -1,7 +1,8 @@
-import ErrorMessage from "@/components/ErrorMessage/ErrorMessage";
+import ErrorMessage from "@/shared/ui/ErrorMessage/ErrorMessage";
+import { memo } from "react";
 
-const NotFoundPage = () => {
+const NotFoundPage = memo(() => {
   return <ErrorMessage type="page" />;
-};
+});
 
 export default NotFoundPage;

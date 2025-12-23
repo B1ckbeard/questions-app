@@ -1,7 +1,7 @@
 import { Outlet } from "react-router";
 import styles from "./styles.module.css";
-import Header from "@/components/Header/Header";
-import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
+import { Header } from "@/widgets/header";
+import { Breadcrumbs } from "@/widgets/breadcrumbs";
 
 const BaseLayout = () => {
   return (

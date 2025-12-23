@@ -1,13 +1,16 @@
 import { useLocation, useParams } from "react-router";
 import styles from "./styles.module.css";
-import QuestionDetails from "@/components/QuestionDetails/QuestionDetails";
-import QuestionAdditionalInfo from "@/components/QuestionAdditionalInfo/QuestionAdditionalInfo";
-import { useGetQuestionByIdQuery } from "@/app/questionsApi";
-import ErrorMessage from "@/components/ErrorMessage/ErrorMessage";
-import QuestionDetailsSkeleton from "@/components/QuestionDetailsSkeleton/QuestionDetailsSkeleton";
-import QuestionInfoSkeleton from "@/components/QuestionInfoSkeleton/QuestionInfoSkeleton";
+import { useGetQuestionByIdQuery } from "@/entities/question/api/questionApi";
+import { memo, useMemo } from "react";
+import ErrorMessage from "@/shared/ui/ErrorMessage/ErrorMessage";
+import {
+  QuestionDetailsSkeleton,
+  QuestionInfoSkeleton,
+  QuestionDetails,
+  QuestionAdditionalInfo,
+} from "@/features/questions";
 
-const QuestionPage = () => {
+const QuestionPage = memo(() => {
   const { id: questionId } = useParams();
   const { state: questionFromState } = useLocation();
 
@@ -19,7 +22,9 @@ const QuestionPage = () => {
     skip: !questionId || questionFromState,
   });
 
-  const question = questionFromState || questionFromApi;
+  const question = useMemo(() => {
+    return questionFromState || questionFromApi;
+  }, [questionFromState, questionFromApi]);
 
   if (!questionFromState && isLoading) {
     return (
@@ -38,6 +43,6 @@ const QuestionPage = () => {
       <QuestionAdditionalInfo question={question} />
     </div>
   );
-};
+});
 
 export default QuestionPage;
