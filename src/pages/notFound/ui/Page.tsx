@@ -1,5 +1,5 @@
-import ErrorMessage from "@/shared/ui/ErrorMessage/ErrorMessage";
 import { memo } from "react";
+import { ErrorMessage } from "@/shared/ui";
 
 const NotFoundPage = memo(() => {
   return <ErrorMessage type="page" />;

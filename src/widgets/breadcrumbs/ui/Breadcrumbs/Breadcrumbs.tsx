@@ -1,6 +1,6 @@
+import { memo, useMemo } from "react";
 import { useLocation } from "react-router";
 import styles from "./styles.module.css";
-import { memo, useMemo } from "react";
 import BreadcrumbItem from "../BreadcrumbItem/BreadcrumbItem";
 
 const Breadcrumbs = memo(() => {

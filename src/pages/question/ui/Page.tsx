@@ -1,32 +1,15 @@
-import { useLocation, useParams } from "react-router";
 import styles from "./styles.module.css";
-import { useGetQuestionByIdQuery } from "@/entities/question/api/questionApi";
-import { memo, useMemo } from "react";
-import ErrorMessage from "@/shared/ui/ErrorMessage/ErrorMessage";
-import {
-  QuestionDetailsSkeleton,
-  QuestionInfoSkeleton,
-  QuestionDetails,
-  QuestionAdditionalInfo,
-} from "@/features/questions";
+import { memo } from "react";
+import { QuestionDetails, QuestionDetailsSkeleton } from "@/entities/question";
+import QuestionInfoSection from "./QuestionInfoSection/QuestionInfoSection";
+import { QuestionInfoSkeleton } from "@/features/question-info";
+import { useCurrentQuestion } from "@/shared/hooks/useCurrentQuestion";
+import { ErrorMessage } from "@/shared/ui";
 
 const QuestionPage = memo(() => {
-  const { id: questionId } = useParams();
-  const { state: questionFromState } = useLocation();
+  const { question, isLoading, isError } = useCurrentQuestion();
 
-  const {
-    data: questionFromApi,
-    isLoading,
-    isError,
-  } = useGetQuestionByIdQuery(Number(questionId), {
-    skip: !questionId || questionFromState,
-  });
-
-  const question = useMemo(() => {
-    return questionFromState || questionFromApi;
-  }, [questionFromState, questionFromApi]);
-
-  if (!questionFromState && isLoading) {
+  if (isLoading) {
     return (
       <div className={styles.container}>
         <QuestionDetailsSkeleton />
@@ -35,12 +18,12 @@ const QuestionPage = memo(() => {
     );
   }
 
-  if (isError && !questionFromState) return <ErrorMessage type="question" />;
+  if (isError || !question) return <ErrorMessage type="question" />;
 
   return (
     <div className={styles.container}>
       <QuestionDetails question={question} />
-      <QuestionAdditionalInfo question={question} />
+      <QuestionInfoSection />
     </div>
   );
 });

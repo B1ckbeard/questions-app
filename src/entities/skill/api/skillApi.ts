@@ -1,14 +1,13 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-const BASE_URL = import.meta.env.VITE_QUESTIONS_BASE_API_URL as string;
+import { baseApi } from "@/shared/api/baseApi";
 
-export const skillApi = createApi({
-  reducerPath: "skillApi",
-  baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
-  tagTypes: ["skills"],
+export const skillApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getSkills: builder.query({
-      query: ({ page = 1, limit = 15 }) => `skills?page=${page}&limit=${limit}`,
-      providesTags: ["skills"],
+      query: ({ page = 1, limit = 15 }) => ({
+        url: "skills",
+        params: { page, limit },
+      }),
+      providesTags: ["Skills"],
     }),
   }),
 });
