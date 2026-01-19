@@ -1,11 +1,7 @@
-import { setPagesCount } from "@/features/pagination/model/slice";
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-const BASE_URL = import.meta.env.VITE_QUESTIONS_BASE_API_URL as string;
+import { setPagesCount } from "@/features/questions-pagination/model/slice";
+import { baseApi } from "@/shared/api/baseApi";
 
-export const questionApi = createApi({
-  reducerPath: "questionApi",
-  baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
-  tagTypes: ["Question", "Questions"],
+export const questionApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getQuestions: builder.query({
       query: (params) => {
@@ -26,6 +22,7 @@ export const questionApi = createApi({
           params: Object.fromEntries(queryParams),
         };
       },
+
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
@@ -39,6 +36,7 @@ export const questionApi = createApi({
       },
       providesTags: ["Questions"],
     }),
+
     getQuestionById: builder.query({
       query: (id: number) => `questions/public-questions/${id}`,
       providesTags: (id) => [{ type: "Question" as const, id }],

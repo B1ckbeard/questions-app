@@ -3,6 +3,7 @@ import styles from "./styles.module.css";
 import { Header } from "@/widgets/header";
 import { Breadcrumbs } from "@/widgets/breadcrumbs";
 import Snowfall from "react-snowfall";
+import { Drawer } from "@/widgets/drawer";
 
 const BaseLayout = () => {
   return (
@@ -10,6 +11,7 @@ const BaseLayout = () => {
       <Header />
       <main className={styles.main}>
         <Breadcrumbs />
+        <Drawer/>
         <Snowfall />
         <Outlet />
       </main>

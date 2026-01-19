@@ -1,0 +1,13 @@
+.info {
+    height: auto;
+    max-width: 360px;
+    min-width: 360px;
+    position: sticky;
+    top: 0;
+}
+
+@media (width <=1280px) {
+    .info {
+        display: none;
+    }
+}

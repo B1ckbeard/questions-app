@@ -1,5 +1,5 @@
-import { Skill } from "@/entities/skill/model/types";
-import { Specialization } from "@/entities/specialization/model/types";
+import { Skill } from "@/entities/skill";
+import { Specialization } from "@/entities/specialization";
 
 export interface Question {
   id: number;

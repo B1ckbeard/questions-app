@@ -51,7 +51,7 @@ const DetailsButton = memo(({ question }: Props) => {
       className={styles.detailsButton}
     >
       {SvgIcon}
-      Подробнее
+      <span className={styles.buttonDescription}>Подробнее</span>
     </Link>
   );
 });

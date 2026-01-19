@@ -1,0 +1,36 @@
+.questionsList {
+    display: flex;
+    flex-direction: column;
+}
+
+.questionsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.questionsHeaderHr {
+    margin-bottom: 24px;
+    border-bottom: 1px solid #E8E8E8;
+    border-top-width: 0;
+}
+
+.title {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 120%;
+    color: #191919;
+}
+
+.desciption {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 120%;
+}
+
+@media (width <=480px) {
+    .title {
+        font-size: 20px;
+    }
+}

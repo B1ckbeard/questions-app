@@ -5,3 +5,9 @@
     background-color: #fff;
     box-shadow: 0 4px 10px 0 #6a63761a;
 }
+
+@media (width <=768px) {
+    .wrapper {
+        padding: 20px 10px;
+    }
+}

@@ -5,9 +5,6 @@
     border: none;
     border-radius: 8px;
     gap: 8px;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 120%;
     background-color: #F8F8F8;
     cursor: pointer;
     color: #141414;
@@ -15,4 +12,17 @@
 
 .detailsButton:hover {
     color: #6A0BFF;
+}
+
+.buttonDescription {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    color: inherit;
+}
+
+@media (width <=768px) {
+    .buttonDescription {
+        display: none;
+    }
 }

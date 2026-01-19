@@ -17,3 +17,9 @@
     padding: 2px 4px;
     border-radius: 4px;
 }
+
+@media (width <=480px) {
+    .grade {
+        font-size: 12px;
+    }
+}

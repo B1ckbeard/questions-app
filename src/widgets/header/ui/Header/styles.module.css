@@ -5,6 +5,10 @@
     border-bottom: 1px solid #E8E8E8;
     display: flex;
     justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
 .wrapper {
@@ -30,7 +34,7 @@
     flex-direction: row;
     align-items: center;
     gap: 8px;
-    width: 172px;
+    max-width: 172px;
 }
 
 .logo {
@@ -43,13 +47,57 @@
     width: 99px;
 }
 
+.mobileMenu {
+    position: relative;
+}
+
+.mobileMenuButton {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
+    color: #191919;
+    cursor: pointer;
+    padding: 6px 10px;
+    border: none;
+    background-color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.mobileMenuButton:hover {
+    border-radius: 12px;
+    background-color: #F8F8F8;
+    color: #5509CC;
+}
+
+.popoverMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px 0 #6a63761a;
+    min-width: 200px;
+    z-index: 1000;
+    overflow: hidden;
+    padding: 16px 8px;
+}
+
+.popoverNavNenu {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 4px;
+}
+
 .navNenu {
     display: flex;
     flex-direction: row;
     gap: 20px;
 }
 
-.navNenu>li {
+.navNenuItem {
     font-weight: 500;
     font-size: 16px;
     line-height: 140%;
@@ -58,7 +106,7 @@
     padding: 6px 10px;
 }
 
-.navNenu>li:hover {
+.navNenuItem:hover {
     border-radius: 12px;
     background-color: #F8F8F8;
     color: #5509CC;
@@ -94,4 +142,10 @@
     font-size: 18px;
     line-height: 100%;
     cursor: pointer;
+}
+
+@media (width <=768px) {
+    .title {
+        display: none;
+    }
 }
