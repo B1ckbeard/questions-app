@@ -1,0 +1,12 @@
+.burgerButton {
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: initial;
+    cursor: pointer;
+    color: #191919;
+}
+
+.burgerButton:hover {
+    color: #6A0BFF;
+}

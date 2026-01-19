@@ -1,6 +1,6 @@
+import { memo, useMemo } from "react";
 import { Link } from "react-router";
 import styles from "./styles.module.css";
-import { memo, useMemo } from "react";
 import { BreadcrumbItemProps } from "../../model/types";
 
 const BreadcrumbItem = memo(

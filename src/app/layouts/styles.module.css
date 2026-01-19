@@ -12,3 +12,15 @@
     padding: 24px 20px;
     flex: 1;
 }
+
+@media (width <=1280px) {
+    .main {
+        padding: 20px 16px;
+    }
+}
+
+@media (width <=768px) {
+    .main {
+        padding: 20px 10px;
+    }
+}

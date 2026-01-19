@@ -1,0 +1,23 @@
+.filterButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    background-color: initial;
+    cursor: pointer;
+    color: #191919;
+}
+
+.filterButton:hover {
+    color: #6A0BFF;
+}
+
+@media (width > 1280px) {
+    .filterButton {
+        display: none;
+    }
+}

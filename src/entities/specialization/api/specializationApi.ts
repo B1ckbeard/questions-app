@@ -1,15 +1,13 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-const BASE_URL = import.meta.env.VITE_QUESTIONS_BASE_API_URL as string;
+import { baseApi } from "@/shared/api/baseApi";
 
-export const specializationApi = createApi({
-  reducerPath: "specializationApi",
-  baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
-  tagTypes: ["specializations"],
+export const specializationApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getSpecializations: builder.query({
-      query: ({ page = 1, limit = 10 }) =>
-        `specializations?page=${page}&limit=${limit}`,
-      providesTags: ["specializations"],
+      query: ({ page = 1, limit = 10 }) => ({
+        url: "specializations",
+        params: { page, limit },
+      }),
+      providesTags: ["Specializations"],
     }),
   }),
 });

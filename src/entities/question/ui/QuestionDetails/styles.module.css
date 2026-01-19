@@ -1,0 +1,38 @@
+.details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.text {
+    font-weight: 500;
+    line-height: 120%;
+    color: #303030;
+}
+
+.questionTitle {
+    font-size: 24px;
+}
+
+.questionsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.description {
+    font-size: 16px;
+    line-height: 130%;
+}
+
+.answerTitle {
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+
+@media (width <=480px) {
+    .questionTitle {
+        font-size: 20px;
+    }
+}

@@ -1,4 +1,5 @@
 .chevrone {
+    flex-shrink: 0;
     transition: transform .3s ease-in-out;
 }
 
