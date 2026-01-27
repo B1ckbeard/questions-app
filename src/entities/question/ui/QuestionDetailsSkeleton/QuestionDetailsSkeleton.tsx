@@ -1,8 +1,7 @@
-import { memo } from "react";
 import styles from "./styles.module.css";
 import { Wrapper } from "@/shared/ui";
 
-const QuestionDetailsSkeleton = memo(() => {
+const QuestionDetailsSkeleton = () => {
   return (
     <div className={styles.details}>
       <Wrapper>
@@ -23,6 +22,6 @@ const QuestionDetailsSkeleton = memo(() => {
       </Wrapper>
     </div>
   );
-});
+};
 
 export default QuestionDetailsSkeleton;

@@ -1,11 +1,11 @@
 import styles from "./styles.module.css";
-import { memo, useMemo } from "react";
+import { useMemo } from "react";
 
 interface Props {
   onClick: () => void;
 }
 
-const ButtonClose = memo(({ onClick }: Props) => {
+const ButtonClose = ({ onClick }: Props) => {
   const SvgIcon = useMemo(
     () => (
       <svg
@@ -44,6 +44,6 @@ const ButtonClose = memo(({ onClick }: Props) => {
       {SvgIcon}
     </button>
   );
-});
+};
 
 export default ButtonClose;

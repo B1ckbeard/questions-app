@@ -1,4 +1,4 @@
-import { memo, useMemo } from "react";
+import { useMemo } from "react";
 import styles from "./styles.module.css";
 import { Wrapper } from "@/shared/ui";
 
@@ -6,7 +6,7 @@ interface Props {
   count?: number;
 }
 
-const QuestionsListSkeleton = memo(({ count = 10 }: Props) => {
+const QuestionsListSkeleton = ({ count = 10 }: Props) => {
   const cards = useMemo(() => [...Array(count)], [count]);
   return (
     <Wrapper>
@@ -23,6 +23,6 @@ const QuestionsListSkeleton = memo(({ count = 10 }: Props) => {
       </div>
     </Wrapper>
   );
-});
+};
 
 export default QuestionsListSkeleton;

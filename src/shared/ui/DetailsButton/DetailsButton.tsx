@@ -1,13 +1,13 @@
 import { Link } from "react-router";
 import styles from "./styles.module.css";
-import { memo, useMemo } from "react";
+import { useMemo } from "react";
 import { Question } from "@/entities/question/model/types";
 
 interface Props {
   question: Question;
 }
 
-const DetailsButton = memo(({ question }: Props) => {
+const DetailsButton = ({ question }: Props) => {
   const SvgIcon = useMemo(
     () => (
       <svg
@@ -54,6 +54,6 @@ const DetailsButton = memo(({ question }: Props) => {
       <span className={styles.buttonDescription}>Подробнее</span>
     </Link>
   );
-});
+};
 
 export default DetailsButton;

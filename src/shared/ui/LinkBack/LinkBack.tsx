@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router";
 import styles from "./styles.module.css";
 import { icons } from "@/shared/assets";
-import { memo } from "react";
 
-const LinkBack = memo(() => {
+const LinkBack = () => {
   const navigate = useNavigate();
   return (
     <div className={styles.navigate}>
@@ -13,6 +12,6 @@ const LinkBack = memo(() => {
       </a>
     </div>
   );
-});
+};
 
 export default LinkBack;

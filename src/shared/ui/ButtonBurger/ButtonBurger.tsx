@@ -1,9 +1,9 @@
 import { useAppDispatch } from "@/app/appStore";
 import styles from "./styles.module.css";
-import { memo, useMemo } from "react";
+import { useMemo } from "react";
 import { openDrawer } from "@/widgets/drawer/model/slice";
 
-const ButtonBurger = memo(() => {
+const ButtonBurger = () => {
   const dispatch = useAppDispatch();
 
   const handleOpenSidebar = () => {
@@ -48,6 +48,6 @@ const ButtonBurger = memo(() => {
       {SvgIcon}
     </button>
   );
-});
+};
 
 export default ButtonBurger;

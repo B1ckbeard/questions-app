@@ -1,4 +1,3 @@
-import { memo } from "react";
 import styles from "./styles.module.css";
 
 interface Props {
@@ -6,12 +5,12 @@ interface Props {
   onClick: (keyword: string) => void;
 }
 
-const LinkKeyword = memo(({ keyword, onClick }: Props) => {
+const LinkKeyword = ({ keyword, onClick }: Props) => {
   return (
     <p className={styles.keyword} onClick={() => onClick(keyword)}>
       #{keyword}
     </p>
   );
-});
+};
 
 export default LinkKeyword;
