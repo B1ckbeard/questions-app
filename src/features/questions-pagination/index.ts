@@ -1,3 +1,3 @@
-import Pagination from "./ui/Pagination/Pagination";
+import QuestionsPagination from "./ui/QuestionsPagination/QuestionsPagination";
 
-export { Pagination };
+export { QuestionsPagination };

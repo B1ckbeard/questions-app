@@ -11,6 +11,8 @@ import GradeBadge from "./GradeBadge/GradeBadge";
 import LinkBack from "./LinkBack/LinkBack";
 import LinkKeyword from "./LinkKeyword/LinkKeyword";
 import LinkShowMore from "./LinkShowMore/LinkShowMore";
+import Pagination from "./Pagination/Pagination";
+import PaginationButton from "./PaginationButton/PaginationButton";
 import QuestionHtml from "./QuestionHtml/QuestionHtml";
 import SearchIcon from "./SearchIcon/SearchIcon";
 import SearchInput from "./SearchInput/SearchInput";
@@ -34,4 +36,6 @@ export {
   SearchIcon,
   SearchInput,
   Wrapper,
+  Pagination,
+  PaginationButton,
 };

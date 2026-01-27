@@ -1,11 +1,20 @@
 import styles from "./styles.module.css";
 import { memo } from "react";
-import { usePagination } from "../../lib/usePagination";
-import PaginationButton from "../PaginationButton/PaginationButton";
 import { icons } from "@/shared/assets";
-import { ArrowButton } from "@/shared/ui";
+import { ArrowButton, PaginationButton } from "@/shared/ui";
 
-const Pagination = memo(() => {
+interface PaginationProps {
+  currentPage: number;
+  startPage: number;
+  pagesCount: number;
+  delta: number;
+  pagesRange: number[];
+  onPageClick: (page: number) => void;
+  handlePrevPage: () => void;
+  handleNextPage: () => void;
+}
+
+const Pagination = memo((props: PaginationProps) => {
   const {
     currentPage,
     startPage,
@@ -15,9 +24,7 @@ const Pagination = memo(() => {
     onPageClick,
     handlePrevPage,
     handleNextPage,
-  } = usePagination();
-
-  if (pagesCount === 0) return null;
+  } = props;
 
   return (
     <div className={styles.pagination}>

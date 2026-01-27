@@ -1,4 +1,4 @@
-import { memo, useCallback } from "react";
+import { useCallback } from "react";
 import styles from "./styles.module.css";
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
   isActive: boolean;
 }
 
-const PaginationButton = memo(({ page, onClick, isActive }: Props) => {
+const PaginationButton = ({ page, onClick, isActive }: Props) => {
   const handleClick = useCallback(
     (e: React.MouseEvent) => {
       e.preventDefault();
@@ -24,6 +24,6 @@ const PaginationButton = memo(({ page, onClick, isActive }: Props) => {
       {page}
     </button>
   );
-});
+};
 
 export default PaginationButton;
