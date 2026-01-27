@@ -1,4 +1,4 @@
-import { memo, useMemo } from "react";
+import { useMemo } from "react";
 import styles from "./styles.module.css";
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
   disabled: boolean;
 }
 
-const ArrowButton = memo(({ side = "right", onClick, disabled }: Props) => {
+const ArrowButton = ({ side = "right", onClick, disabled }: Props) => {
   const svgPath = useMemo(
     () =>
       side === "left"
@@ -44,6 +44,6 @@ const ArrowButton = memo(({ side = "right", onClick, disabled }: Props) => {
       </svg>
     </button>
   );
-});
+};
 
 export default ArrowButton;

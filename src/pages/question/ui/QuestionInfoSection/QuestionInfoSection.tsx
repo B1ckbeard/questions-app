@@ -1,9 +1,8 @@
 import styles from "./styles.module.css";
-import { memo } from "react";
 import { QuestionInfo } from "@/features/question-info";
 import { Wrapper } from "@/shared/ui";
 
-const QuestionInfoSection = memo(() => {
+const QuestionInfoSection = () => {
   return (
     <div className={styles.info}>
       <Wrapper>
@@ -11,6 +10,6 @@ const QuestionInfoSection = memo(() => {
       </Wrapper>
     </div>
   );
-});
+};
 
 export default QuestionInfoSection;

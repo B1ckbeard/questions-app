@@ -1,13 +1,13 @@
 import { useAppDispatch } from "@/app/appStore";
 import styles from "./styles.module.css";
-import { memo, useMemo } from "react";
+import { useMemo } from "react";
 import { openDrawer } from "@/widgets/drawer/model/slice";
 
 interface Props {
   type: "filters" | "info";
 }
 
-const ButtonShowFilters = memo(({ type }: Props) => {
+const ButtonShowFilters = ({ type }: Props) => {
   const dispatch = useAppDispatch();
 
   const handleShowFilters = () => {
@@ -39,6 +39,6 @@ const ButtonShowFilters = memo(({ type }: Props) => {
       {SvgIcon}
     </button>
   );
-});
+};
 
 export default ButtonShowFilters;

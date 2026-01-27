@@ -1,4 +1,4 @@
-import { ChangeEvent, memo } from "react";
+import { ChangeEvent } from "react";
 import styles from "./styles.module.css";
 import SearchIcon from "../SearchIcon/SearchIcon";
 
@@ -7,7 +7,7 @@ interface Props {
   searchQuery: string;
 }
 
-const SearchInput = memo(({ onChange, searchQuery }: Props) => {
+const SearchInput = ({ onChange, searchQuery }: Props) => {
   return (
     <div className={styles.search}>
       <SearchIcon />
@@ -21,6 +21,6 @@ const SearchInput = memo(({ onChange, searchQuery }: Props) => {
       />
     </div>
   );
-});
+};
 
 export default SearchInput;

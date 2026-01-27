@@ -1,8 +1,7 @@
-import { memo } from "react";
 import { Link } from "react-router";
 import styles from "./styles.module.css";
 
-const HeaderSidebar = memo(() => {
+const HeaderSidebar = () => {
   return (
     <div className={styles.auth}>
       <Link to="/questions" className={styles.authLink}>
@@ -11,6 +10,6 @@ const HeaderSidebar = memo(() => {
       <button className={styles.authButton}>Регистрация</button>
     </div>
   );
-});
+};
 
 export default HeaderSidebar;

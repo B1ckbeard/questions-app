@@ -1,13 +1,39 @@
 import { memo } from "react";
 import styles from "./styles.module.css";
-import { Question, QuestionItem } from "@/entities/question";
-import { ButtonShowFilters } from "@/shared/ui";
+import {
+  Question,
+  QuestionItem,
+  useGetQuestionsQuery,
+} from "@/entities/question";
+import { ButtonShowFilters, ErrorMessage } from "@/shared/ui";
+import { useSearchParams } from "react-router";
+import QuestionsListSkeleton from "../QuestionsListSkeleton/QuestionsListSkeleton";
+import { useAppSelector } from "@/app/appStore";
 
-interface Props {
-  questions: Question[];
-}
+const QuestionsList = memo(() => {
+  const [searchParams] = useSearchParams();
+  const { currentPage, pageLimit } = useAppSelector(
+    (state) => state.pagination
+  );
 
-const QuestionsList = memo(({ questions }: Props) => {
+  const params = {
+    page: currentPage,
+    limit: pageLimit,
+    filters: searchParams.toString(),
+  };
+
+  const {
+    data: questions,
+    isLoading,
+    isError,
+  } = useGetQuestionsQuery(params, {
+    refetchOnMountOrArgChange: true,
+  });
+
+  if (isLoading) return <QuestionsListSkeleton />;
+
+  if (isError) return <ErrorMessage />;
+
   return (
     <div className={styles.questionsList}>
       <div className={styles.questionsHeader}>
@@ -15,8 +41,8 @@ const QuestionsList = memo(({ questions }: Props) => {
         <ButtonShowFilters type={"filters"} />
       </div>
       <hr className={styles.questionsHeaderHr} />
-      {questions.length > 0 ? (
-        questions.map((question) => (
+      {questions?.data.length > 0 ? (
+        questions?.data.map((question: Question) => (
           <QuestionItem key={question.id} question={question} />
         ))
       ) : (

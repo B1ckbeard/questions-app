@@ -1,12 +1,11 @@
 import styles from "./styles.module.css";
-import { memo } from "react";
 import { QuestionDetails, QuestionDetailsSkeleton } from "@/entities/question";
 import QuestionInfoSection from "./QuestionInfoSection/QuestionInfoSection";
 import { QuestionInfoSkeleton } from "@/features/question-info";
 import { useCurrentQuestion } from "@/shared/hooks/useCurrentQuestion";
 import { ErrorMessage } from "@/shared/ui";
 
-const QuestionPage = memo(() => {
+const QuestionPage = () => {
   const { question, isLoading, isError } = useCurrentQuestion();
 
   if (isLoading) {
@@ -26,6 +25,6 @@ const QuestionPage = memo(() => {
       <QuestionInfoSection />
     </div>
   );
-});
+};
 
 export default QuestionPage;

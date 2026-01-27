@@ -1,7 +1,6 @@
-import { memo } from "react";
 import { icons } from "@/shared/assets";
 
-const SearchIcon = memo(() => (
+const SearchIcon = () => (
   <img
     src={icons.searchIcon}
     alt="Иконка поиска"
@@ -9,6 +8,6 @@ const SearchIcon = memo(() => (
     height="20"
     loading="lazy"
   />
-));
+);
 
 export default SearchIcon;

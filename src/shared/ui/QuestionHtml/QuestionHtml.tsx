@@ -1,4 +1,4 @@
-import { memo, useMemo } from "react";
+import { useMemo } from "react";
 import styles from "./styles.module.css";
 import DOMPurify from "dompurify";
 
@@ -6,7 +6,7 @@ interface Props {
   answer: string;
 }
 
-const QuestionHtml = memo(({ answer }: Props) => {
+const QuestionHtml = ({ answer }: Props) => {
   const cleanHtml = useMemo(() => {
     return DOMPurify.sanitize(answer, {
       ALLOWED_TAGS: [
@@ -44,6 +44,6 @@ const QuestionHtml = memo(({ answer }: Props) => {
       dangerouslySetInnerHTML={{ __html: cleanHtml }}
     />
   );
-});
+};
 
 export default QuestionHtml;
